@@ -1,12 +1,16 @@
-import React from 'react';
-import { useSearch } from '../hooks/useSearch';
+import React, { useState } from 'react';
+import useSearch from '../hooks/useSearch';
+import Search from '../components/home/Search';
 
 const Home = () => {
   const { searchTerm, handleSearchTerm, handleButtonToggle, artists } = useSearch(page);
+  const [page, setPage] = useState(1);
 
   return (
     <>
-      <h1>This is the home Container</h1>
+      <Search searchTerm={searchTerm}
+        onChange={handleSearchTerm}
+        onClick={handleButtonToggle} />
     </>
   );
 };

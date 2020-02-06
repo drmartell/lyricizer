@@ -1,5 +1,8 @@
 import React from 'react';
-import { Router, Swtich } from 'react-router-dom';
+import { 
+  BrowserRouter as Router, 
+  Switch,
+  Route } from 'react-router-dom';
 import Home from '../containers/Home';
 import Artist from './Artist/Artist.js';
 
