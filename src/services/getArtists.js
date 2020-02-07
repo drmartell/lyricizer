@@ -1,14 +1,9 @@
-export const getArtists = (search, offset) => {
+export default function(search, offset) {
   return fetch(`http://musicbrainz.org/ws/2/artist?query=${encodeURIComponent(search)}&fmt=json&limit=25&offset=${offset}`)
     .then(res => res.json())
-    .then(artists => {
-      return { 
-        count: artists.count,
-        artists: artists.artists.map(artist => {
-          return {
-            id: artist.id,
-            name: artist.name
-          };
-        })
-      };});
-};
+    .then(({ count, artists }) => (
+      { 
+        count,
+        artists: artists.map(({ id, name }) => ({ id, name }))
+      }));
+}

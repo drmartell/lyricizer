@@ -4,15 +4,13 @@ import ArtistItem from './ArtistsItem';
 import PropTypes from 'prop-types';
 
 const ArtistList = ({ artistArr }) => {
-  const artistsElements = artistArr.map(artist => {
-    return (
-      <li key={artist.id}>
-        <Link to={`/artist/${artist.id}`}>
-          <ArtistItem name={artist.name} />
-        </Link>
-      </li>
-    );
-  });
+  const artistsElements = artistArr.map(artist =>
+    <li key={artist.id}>
+      <Link to={`/artist/${artist.id}`}>
+        <ArtistItem name={artist.name} />
+      </Link>
+    </li>
+  );
 
   return (
     <ul>

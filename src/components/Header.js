@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = () => (
+const Header = () =>
   <header>
     <h1>Lyricizer</h1>
     <nav>
@@ -11,7 +11,6 @@ const Header = () => (
         </li>
       </Link>
     </nav>
-  </header>
-);
+  </header>;
 
 export default Header;

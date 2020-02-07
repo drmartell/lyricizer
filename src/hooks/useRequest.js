@@ -9,9 +9,7 @@ const useRequest = url => {
   useEffect(() => {
     setLoading(true);
     fetch(url)
-      .then(res => {
-        return res.json();
-      })
+      .then(res => res.json())
       .then(json => {
         setCount(json['release-count']);
         setResponse(json);
@@ -22,6 +20,7 @@ const useRequest = url => {
         setLoading(false);
       });
   }, [url]);
+  
   return { response, loading, error, count };
 };
 

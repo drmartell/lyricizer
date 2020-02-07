@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import useRequest from '../../hooks/useRequest';
 import PropTypes from 'prop-types';
 import Paging from '../home/Paging';
+import handleIncrement from '../../utils/handleIncrement';
+import handleDecrement from '../../utils/handleDecrement';
 
-
-export default function Artist({ match }) {
+export default function Artist({ match: { params: { id } } }) {
   const [page, setPage] = useState(1);
   const [offset, setOffset] = useState(0);
-  const { response, loading, count } = useRequest(`http://musicbrainz.org/ws/2/release?artist=${match.params.id}&fmt=json&offset=${offset}`);
+  const { response: { releases }, loading, count } = useRequest(`http://musicbrainz.org/ws/2/release?artist=${id}&fmt=json&offset=${offset}`);
 
   useEffect(() => {
     setOffset((page - 1) * 25);
@@ -15,37 +16,23 @@ export default function Artist({ match }) {
 
   if(loading) return <h1>loading</h1>;
 
-  const albums = response.releases.map(album => {
-    if(album['cover-art-archive'].front) return (
-      <li key={album.id}>
-        <img src={`http://coverartarchive.org/release/${album.id}/front`} />
-        <span>{album.title}</span>
-      </li>
-    );
-
+  const albums = releases.map(album => {
+    const isArt = album['cover-art-archive'].front;
     return (
       <li key={album.id}>
-        <img src={'https://avatars0.githubusercontent.com/u/49651717?s=400&v=4'} />
-        <span>{album.title}</span>
+        <figure>
+          <img src={isArt ? `http://coverartarchive.org/release/${album.id}/front` : 'https://avatars0.githubusercontent.com/u/49651717?s=400&v=4'} />
+          <figcaption>{album.title}</figcaption>
+        </figure>
       </li>
     );
   });
 
-  const handleIncrement = () => {
-    const maxPageNum = Math.floor(count / 25);
-    setPage(page => Math.min(page + 1, maxPageNum));
-  };
-
-  const handleDecrement = () => {
-    if(page <= 1) return;
-    setPage(page => page - 1);
-  };
-
   return (
     <>
       <Paging 
-        onDecrement={handleDecrement}
-        onIncrement={handleIncrement}
+        onDecrement={() => handleDecrement(page, setPage)}
+        onIncrement={() => handleIncrement(count, setPage)}
         page={page}
         count={count}
       />
