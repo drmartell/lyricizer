@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Paging = ({ onIncrement, onDecrement, page, count }) => (
   <>
     <button onClick={onDecrement}>&larr;</button>
-    <span>{page} / {Math.floor(count / 25)}</span>
+    <span>{page} / {Math.max(Math.floor(count / 25), 1)}</span>
     <button onClick={onIncrement}>&rarr;</button>
   </>
 );

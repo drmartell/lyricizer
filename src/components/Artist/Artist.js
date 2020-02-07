@@ -16,13 +16,15 @@ export default function Artist({ match: { params: { id } } }) {
 
   if(loading) return <h1>loading</h1>;
 
-  const albums = releases.map(album => {
-    const isArt = album['cover-art-archive'].front;
+  const albums = releases.map(({ 'cover-art-archive': coverArt, id, title }) => {
+    const isArt = coverArt.front;
+    const imageURL = isArt ? `http://coverartarchive.org/release/${id}/front` : 'https://avatars0.githubusercontent.com/u/49651717?s=400&v=4';
+    
     return (
-      <li key={album.id}>
+      <li key={id}>
         <figure>
-          <img src={isArt ? `http://coverartarchive.org/release/${album.id}/front` : 'https://avatars0.githubusercontent.com/u/49651717?s=400&v=4'} />
-          <figcaption>{album.title}</figcaption>
+          <img src={imageURL} />
+          <figcaption>{title}</figcaption>
         </figure>
       </li>
     );

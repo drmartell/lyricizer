@@ -4,7 +4,7 @@ import {
   Switch,
   Route } from 'react-router-dom';
 import Home from '../containers/Home';
-import Artist from './artist/Artist';
+import Artist from '../components/artist/Artist';
 import Header from '../components/Header';
 
 export default function App() {
