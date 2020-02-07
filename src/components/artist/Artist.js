@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Paging from '../home/Paging';
 import handleIncrement from '../../utils/handleIncrement';
 import handleDecrement from '../../utils/handleDecrement';
+import { Link } from 'react-router-dom';
 
 export default function Artist({ match: { params: { id } } }) {
   const [page, setPage] = useState(1);
@@ -22,10 +23,12 @@ export default function Artist({ match: { params: { id } } }) {
     
     return (
       <li key={id}>
-        <figure>
-          <img src={imageURL} />
-          <figcaption>{title}</figcaption>
-        </figure>
+        <Link to={`/recording/${id}`}>
+          <figure>
+            <img src={imageURL} />
+            <figcaption>{title}</figcaption>
+          </figure>
+        </Link>
       </li>
     );
   });

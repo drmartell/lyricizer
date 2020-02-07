@@ -6,6 +6,7 @@ import {
 import Home from '../containers/Home';
 import Artist from '../components/artist/Artist';
 import Header from '../components/Header';
+import Recording from './recording/Recording';
 
 export default function App() {
   return (  
@@ -14,6 +15,7 @@ export default function App() {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/artist/:id' component={Artist} />
+        <Route path='/recording/:id' component={Recording} />
       </Switch>
     </Router>
   );
