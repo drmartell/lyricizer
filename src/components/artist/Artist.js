@@ -5,11 +5,14 @@ import Paging from '../home/Paging';
 import handleIncrement from '../../utils/handleIncrement';
 import handleDecrement from '../../utils/handleDecrement';
 import { Link } from 'react-router-dom';
+import queryString from 'query-string';
 
-export default function Artist({ match: { params: { id } } }) {
+export default function Artist({ match: { params: { id } }, location }) {
+  const { search } = location;
   const [page, setPage] = useState(1);
   const [offset, setOffset] = useState(0);
   const { response: { releases }, loading, count } = useRequest(`http://musicbrainz.org/ws/2/release?artist=${id}&fmt=json&offset=${offset}`);
+  const { artist } = queryString.parse(search);
 
   useEffect(() => {
     setOffset((page - 1) * 25);
@@ -23,7 +26,7 @@ export default function Artist({ match: { params: { id } } }) {
     
     return (
       <li key={id}>
-        <Link to={`/recording/${id}`}>
+        <Link to={`/recording/${id}?artist=${artist}`}>
           <figure>
             <img src={imageURL} />
             <figcaption>{title}</figcaption>
@@ -53,5 +56,8 @@ Artist.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string.isRequired
     }).isRequired
-  }).isRequired
+  }).isRequired,
+  location: PropTypes.objectOf(PropTypes.shape({
+    search: PropTypes.string.isRequired
+  }).isRequired).isRequired
 };

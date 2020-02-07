@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Component should render Search 1`] = `
+<Fragment>
+  <input
+    onKeyDown={[Function]}
+    placeholder="Search an artist"
+    type="text"
+  />
+  <button>
+    Search
+  </button>
+</Fragment>
+`;

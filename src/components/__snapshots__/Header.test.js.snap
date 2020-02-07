@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component should render Header 1`] = `
+<header>
+  <h1>
+    Lyricizer
+  </h1>
+  <nav>
+    <Link
+      to="/"
+    >
+      <li>
+        Home
+      </li>
+    </Link>
+  </nav>
+</header>
+`;
