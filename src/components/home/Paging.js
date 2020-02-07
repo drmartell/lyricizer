@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Paging = ({ onIncrement, onDecrement, page, count }) => (
-  <>
-    <button onClick={onDecrement}>&larr;</button>
-    <span>{page} / {Math.max(Math.floor(count / 25), 1)}</span>
-    <button onClick={onIncrement}>&rarr;</button>
-  </>
-);
+const Paging = ({ onIncrement, onDecrement, page, count }) => {
+  const maxPage = Math.max(Math.floor(count / 25), 1);
+  return (
+    <>
+      <button onClick={onDecrement}>&larr;</button>
+      <span>{page} / {maxPage}</span>
+      <button onClick={onIncrement}>&rarr;</button>
+    </>
+  );};
 
 Paging.propTypes = {
   onIncrement: PropTypes.func.isRequired,
