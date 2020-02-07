@@ -3,7 +3,6 @@ import useSearch from '../hooks/useSearch';
 import Search from '../components/home/Search';
 import ArtistList from '../components/home/ArtistList';
 import Paging from '../components/home/Paging';
-import Header from '../components/Header';
 
 const Home = () => {
   const [page, setPage] = useState(1);
@@ -22,7 +21,6 @@ const Home = () => {
 
   return (
     <>
-      <Header />
       <Search searchTerm={searchTerm}
         onChange={handleSearchTerm}
         onClick={handleButtonToggle} />
