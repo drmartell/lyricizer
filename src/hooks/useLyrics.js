@@ -5,14 +5,11 @@ export default function useLyrics(artistName, recordingName) {
   const [lyrics, setLyrics] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const fetch = () => {
-    setLyrics(getLyrics(artistName, recordingName));
-  };
-
   useEffect(() => {
     setLoading(true);
-    fetch();
-    (setLoading(false));
+    getLyrics(artistName, recordingName)
+      .then(setLyrics)
+      .finally(setLoading(false));
   });
   
   return { lyrics, loading };

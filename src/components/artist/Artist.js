@@ -57,7 +57,7 @@ Artist.propTypes = {
       id: PropTypes.string.isRequired
     }).isRequired
   }).isRequired,
-  location: PropTypes.objectOf(PropTypes.shape({
+  location: PropTypes.shape(PropTypes.shape({
     search: PropTypes.string.isRequired
   }).isRequired).isRequired
 };

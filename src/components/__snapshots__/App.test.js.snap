@@ -17,6 +17,10 @@ exports[`App component renders App 1`] = `
       component={[Function]}
       path="/recording/:id"
     />
+    <Route
+      component={[Function]}
+      path="/lyrics"
+    />
   </Switch>
 </BrowserRouter>
 `;

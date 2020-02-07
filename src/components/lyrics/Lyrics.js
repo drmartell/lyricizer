@@ -5,12 +5,17 @@ import PropTypes from 'prop-types';
 
 export default function Lyrics({ location }) {
   const { artist, title } = queryString.parse(location.search);
-  const { lyrics, loading } = useLyrics(artist, title);
-
+  const { lyrics } = useLyrics(artist, title);
 
   return (
-    <p>
+    <pre>
       {lyrics}
-    </p>
+    </pre>
   );
 }
+
+Lyrics.propTypes = {
+  location: PropTypes.shape({
+    search: PropTypes.string.isRequired
+  }).isRequired
+};
