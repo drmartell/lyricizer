@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const useRequest = url => {
-  const [response, setResponse] = useState();
+  const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
@@ -9,7 +9,6 @@ const useRequest = url => {
     setLoading(true);
     fetch(url)
       .then(res => {
-        if(!res.ok) throw `Unable to fetch from ${url}: ${res.status}`;
         return res.json();
       })
       .then(json => {

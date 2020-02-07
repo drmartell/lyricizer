@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getArtists } from '../services/getArtists';
 
-const useSearch = (page = 1) => {
+const useSearch = (page) => {
   const [searchTerm, setSearchTerm] = useState('Rick Astley');
   const [artists, setArtists] = useState([]);
   const [buttonToggle, setButtonToggle] = useState(true);
