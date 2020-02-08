@@ -6,7 +6,7 @@ import {
 import Home from '../containers/Home';
 import Artist from '../components/artist/Artist';
 import Header from '../components/Header';
-import Recording from './recording/Recording';
+import Recording from './Recording/Recording';
 import Lyrics from './lyrics/Lyrics';
 
 export default function App() {
