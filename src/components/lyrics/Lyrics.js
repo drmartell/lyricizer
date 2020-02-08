@@ -1,0 +1,21 @@
+import React from 'react';
+import useLyrics from '../../hooks/useLyrics.js';
+import queryString from 'query-string';
+import PropTypes from 'prop-types';
+
+export default function Lyrics({ location }) {
+  const { artist, title } = queryString.parse(location.search);
+  const { lyrics } = useLyrics(artist, title);
+
+  return (
+    <pre>
+      {lyrics}
+    </pre>
+  );
+}
+
+Lyrics.propTypes = {
+  location: PropTypes.shape({
+    search: PropTypes.string.isRequired
+  }).isRequired
+};

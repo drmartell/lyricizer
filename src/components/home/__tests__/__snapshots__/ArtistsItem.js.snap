@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArtistItem component should render ArtistItem 1`] = `
+<section>
+  <h2 />
+</section>
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paging Component should render Paging 1`] = `
+<Fragment>
+  <button>
+    ←
+  </button>
+  <span>
+     / 
+    NaN
+  </span>
+  <button>
+    →
+  </button>
+</Fragment>
+`;
